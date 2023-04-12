@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.header h1 {
+  text-align: center;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 5px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  width: 15px;
+  height: 15px;
+}
+
+.contact-item a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email {
+  margin: 0px;
+}
