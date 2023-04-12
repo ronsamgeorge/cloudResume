@@ -82,4 +82,27 @@ svg {
 ul {
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-left: 10px;
+  padding-left: 20px;
+}
+
+/* PROJECTS SECTION */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-name {
+  font-size: large;
+  font-weight: bold;
+}
+
+.project-date {
+  font-style: italic;
 }
