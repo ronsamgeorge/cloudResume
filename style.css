@@ -1,9 +1,10 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   width: 800px;
   margin: auto auto;
+  border-bottom: 2px solid grey;
 }
 .header {
   display: flex;
@@ -105,4 +106,21 @@ ul {
 
 .project-date {
   font-style: italic;
+}
+
+/* EDUCATION SECTION */
+.educations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.institution-name {
+  font-size: large;
+  font-weight: bold;
 }
