@@ -1,3 +1,10 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 800px;
+  margin: auto auto;
+}
 .header {
   display: flex;
   flex-direction: column;
@@ -38,4 +45,41 @@ svg {
 
 .email {
   margin: 0px;
+}
+
+/* SECTIONS STYLES */
+.section-title {
+  font-size: larger;
+  font-weight: bold;
+  text-align: center;
+}
+
+.section-underline {
+  margin-top: 3px;
+}
+
+.experience-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-company,
+.job-title {
+  font-size: large;
+  font-weight: bold;
+}
+
+.job-date {
+  font-style: italic;
+}
+
+ul {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
