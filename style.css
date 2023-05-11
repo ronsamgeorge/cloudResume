@@ -124,3 +124,14 @@ ul {
   font-size: large;
   font-weight: bold;
 }
+
+/* SKILLS SECTION */
+.skills-item {
+  display: flex;
+  gap: 20px;
+}
+
+.skill-title {
+  font-size: large;
+  font-weight: bold;
+}
