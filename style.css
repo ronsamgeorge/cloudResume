@@ -6,6 +6,11 @@
   margin: auto auto;
   border-bottom: 2px solid grey;
 }
+
+.counter {
+  display: flex;
+  gap: 8px;
+}
 .header {
   display: flex;
   flex-direction: column;

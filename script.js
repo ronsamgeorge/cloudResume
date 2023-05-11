@@ -6,6 +6,15 @@ const getCount = async () => {
 
   const data = await response.json();
   console.log(data);
+  return data;
 };
 
-getCount();
+const setVisitorCount = async () => {
+  const count = await getCount();
+
+  const countDiv = document.querySelector(".count-value");
+
+  countDiv.innerText = await count;
+};
+
+setVisitorCount();
