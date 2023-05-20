@@ -104,3 +104,14 @@ resource "aws_lambda_function" "createLambdaHandler" {
     source_code_hash = filebase64("../backend/lambda_function.zip")
     
 }
+
+# integration API Gateway with Lambda 
+resource "aws_api_gateway_integration" "countApiIntegration" {
+  rest_api_id = aws_api_gateway_rest_api.getCountApi.id
+  resource_id = aws_api_gateway_method.getCountMethod.resource_id 
+  http_method = aws_api_gateway_method.getCountMethod.http_method
+
+  integration_http_method = "GET"
+  type = "AWS_PROXY"
+  uri = aws_lambda_function.createLambdaHandler.invoke_arn
+}
