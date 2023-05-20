@@ -75,3 +75,18 @@ EOF
 data "template_file" "infrolambdapolicy" {
   template = "${file("${path.module}/policy.json")}"
 }
+
+
+# create policy for lambda
+resource "aws_iam_policy" "getCountLambdaPolicy" {
+    name = "getCountLambdaPolicy"
+    path = "/"
+    description = "IAM Policy for Lambda getCount Function"
+    policy = data.template_file.infrolambdapolicy.rendered  
+}
+
+# attaching the policy with the role
+resource "aws_iam_role_policy_attachment" "CountLambdaPolicy" {
+ role = aws_iam_role.lambdaDynamoInfra.name
+ policy_arn = aws_iam_policy.getCountLambdaPolicy.arn
+}
