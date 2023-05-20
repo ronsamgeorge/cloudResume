@@ -111,7 +111,26 @@ resource "aws_api_gateway_integration" "countApiIntegration" {
   resource_id = aws_api_gateway_method.getCountMethod.resource_id 
   http_method = aws_api_gateway_method.getCountMethod.http_method
 
-  integration_http_method = "GET"
+  integration_http_method = "POST"
   type = "AWS_PROXY"
   uri = aws_lambda_function.createLambdaHandler.invoke_arn
+}
+
+# lambda permission for API Gateway 
+resource "aws_lambda_permission" "api_lambda_permission" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+
+  function_name = aws_lambda_function.createLambdaHandler.function_name
+  principal = "apigateway.amazonaws.com"
+  source_arn = "${aws_api_gateway_rest_api.getCountApi.execution_arn}/*/GET/count"
+}
+
+# deploy api gateway
+resource "aws_api_gateway_deployment" "productapistageprod" {
+  depends_on = [
+    aws_api_gateway_integration.countApiIntegration
+  ]
+  rest_api_id = aws_api_gateway_rest_api.getCountApi.id
+  stage_name  = "prod"
 }
