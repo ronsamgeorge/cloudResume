@@ -111,8 +111,8 @@ resource "aws_api_gateway_integration" "countApiIntegration" {
   resource_id = aws_api_gateway_method.getCountMethod.resource_id 
   http_method = aws_api_gateway_method.getCountMethod.http_method
 
-  integration_http_method = "POST"
-  type = "AWS_PROXY"
+  integration_http_method = "POST" #integration method between lambda and APIGW has to be POST always 
+  type = "AWS"   # changed from AWS_PROXY
   uri = aws_lambda_function.createLambdaHandler.invoke_arn
 }
 
