@@ -90,3 +90,17 @@ resource "aws_iam_role_policy_attachment" "CountLambdaPolicy" {
  role = aws_iam_role.lambdaDynamoInfra.name
  policy_arn = aws_iam_policy.getCountLambdaPolicy.arn
 }
+
+
+# create Lambda Function 
+resource "aws_lambda_function" "createLambdaHandler" {
+    function_name = "getCount"
+    filename = "../backend/lambda_function.zip"
+
+    handler = "lambda_function.lambda_handler"
+    runtime = "python3.10"
+
+    role = aws_iam_role.lambdaDynamoInfra.arn
+    source_code_hash = filebase64("../backend/lambda_function.zip")
+    
+}
