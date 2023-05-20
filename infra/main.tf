@@ -50,3 +50,28 @@ resource "aws_api_gateway_method" "getCountMethod" {
   rest_api_id = aws_api_gateway_rest_api.getCountApi.id
 }
 
+# create IAM Role for the lambda function 
+resource "aws_iam_role" "lambdaDynamoInfra" {
+  name = "lambdaDynamoInfra"
+  assume_role_policy = <<EOF
+  {
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+
+# policy file for lambda role
+data "template_file" "infrolambdapolicy" {
+  template = "${file("${path.module}/policy.json")}"
+}
